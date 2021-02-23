@@ -9,8 +9,8 @@ class Main {
         return NumberFormat.getNumberInstance(Locale.US).format(n);
     }
 
-    public static void getColisions(int iters, boolean random, IHash hash) {
-        int colisions = 0;
+    public static void getCollisions(int iters, boolean random, IHash hash) {
+        int collisions = 0;
         Set<Integer> hashs = new HashSet<>();
 
         for(long i = 0; i < iters; ++i) {
@@ -18,10 +18,10 @@ class Main {
             if (random) t *= 0xff51afd7ed558ccdL;
             String test = Long.toString(t, Character.MAX_RADIX);
 
-            // Check to see if the hash colides
+            // Check to see if the hash collides
             int h = hash.hash(test);
             if(hashs.contains(h)) {
-                colisions += 1;
+                collisions += 1;
             } else {
                 hashs.add(h);
             }
@@ -29,12 +29,12 @@ class Main {
 
         StringBuilder msg = new StringBuilder();
         msg.append(hash.getClass().getSimpleName()).append(":\t");
-        msg.append(formatInt(colisions)).append(" / ").append(formatInt(iters)).append(" colisions");
+        msg.append(formatInt(collisions)).append(" / ").append(formatInt(iters)).append(" collisions");
         System.out.println(msg);
     }
 
     public static void main(String[] args) {
-        int iter = 10_000_000;
+        int iter = 100_000_000;
 
         try {
             iter = Integer.parseInt(args[0]);
@@ -50,6 +50,7 @@ class Main {
             new XOR32Hash(),
             new XOR64Hash(),
             new MurmurHash(),
+            new OneAtATimeHash(),
             new CRC32Hash()
         };
 
@@ -58,7 +59,7 @@ class Main {
         System.out.println("+-------------------------+");
 
         for(IHash hash : hashs) {
-            getColisions(iter, false, hash);
+            getCollisions(iter, false, hash);
         }
 
         System.out.println("+---------------------+");
@@ -66,7 +67,7 @@ class Main {
         System.out.println("+---------------------+");
 
         for(IHash hash : hashs) {
-            getColisions(iter, true, hash);
+            getCollisions(iter, true, hash);
         }
     }
 }

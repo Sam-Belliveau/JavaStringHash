@@ -1,8 +1,8 @@
 /**
  * For something like HashSet binning, theoretically CRC32 should be the most
- * optimal. This is also a insanely fast hash, and its colision resistance is
- * very good. It's cryptographic resistance is not ideal, however for
- * circumstances such as binning, it is great.
+ * optimal. Its collision resistance is very good, however the lookup table can
+ * cause slowness on some machines. It's cryptographic resistance is not ideal,
+ * however for circumstances such as binning, it is great.
  * 
  * If I had were to be responsible for updating the JVM implementation, it would
  * be using this function. This function is amazing for hashing any type of data
@@ -17,7 +17,7 @@ public class CRC32Hash implements IHash {
             int result = i;
 
             for (int bit = 0; bit < 8; ++bit) {
-                result = (result >>> 1) ^ (((result & 1) == 0) ? (0) : (POLYNOMIAL));
+                result = (result >>> 1) ^ ((result & 1) * (POLYNOMIAL));
             }
 
             TABLE[i] = result;
