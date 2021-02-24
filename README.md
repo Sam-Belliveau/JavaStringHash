@@ -29,8 +29,8 @@ DefaultHash:    565,970 / 1,000,000 collisions
 CommonHash:     565,970 / 1,000,000 collisions
 RotateHash:     433,440 / 1,000,000 collisions
 BetterCommonHash:       0 / 1,000,000 collisions
-XOR32Hash:      0 / 1,000,000 collisions
-XOR64Hash:      0 / 1,000,000 collisions
+XOR32Hash:      112 / 1,000,000 collisions
+XOR64Hash:      228 / 1,000,000 collisions
 MurmurHash:     6 / 1,000,000 collisions
 OneAtATimeHash: 4,880 / 1,000,000 collisions
 CRC32Hash:      0 / 1,000,000 collisions
@@ -41,8 +41,8 @@ DefaultHash:    138 / 1,000,000 collisions
 CommonHash:     138 / 1,000,000 collisions
 RotateHash:     133 / 1,000,000 collisions
 BetterCommonHash:       104 / 1,000,000 collisions
-XOR32Hash:      120 / 1,000,000 collisions
-XOR64Hash:      113 / 1,000,000 collisions
+XOR32Hash:      136 / 1,000,000 collisions
+XOR64Hash:      101 / 1,000,000 collisions
 MurmurHash:     138 / 1,000,000 collisions
 OneAtATimeHash: 119 / 1,000,000 collisions
 CRC32Hash:      105 / 1,000,000 collisions
@@ -58,8 +58,8 @@ DefaultHash:    6,422,174 / 10,000,000 collisions
 CommonHash:     6,422,174 / 10,000,000 collisions
 RotateHash:     5,512,304 / 10,000,000 collisions
 BetterCommonHash:       0 / 10,000,000 collisions
-XOR32Hash:      0 / 10,000,000 collisions
-XOR64Hash:      0 / 10,000,000 collisions
+XOR32Hash:      11,743 / 10,000,000 collisions
+XOR64Hash:      11,396 / 10,000,000 collisions
 MurmurHash:     10,917 / 10,000,000 collisions
 OneAtATimeHash: 136,286 / 10,000,000 collisions
 CRC32Hash:      0 / 10,000,000 collisions
@@ -70,8 +70,8 @@ DefaultHash:    11,573 / 10,000,000 collisions
 CommonHash:     11,573 / 10,000,000 collisions
 RotateHash:     12,972 / 10,000,000 collisions
 BetterCommonHash:       12,132 / 10,000,000 collisions
-XOR32Hash:      11,425 / 10,000,000 collisions
-XOR64Hash:      11,563 / 10,000,000 collisions
+XOR32Hash:      11,732 / 10,000,000 collisions
+XOR64Hash:      11,628 / 10,000,000 collisions
 MurmurHash:     11,575 / 10,000,000 collisions
 OneAtATimeHash: 11,833 / 10,000,000 collisions
 CRC32Hash:      11,559 / 10,000,000 collisions
@@ -87,8 +87,8 @@ DefaultHash:    68,487,010 / 100,000,000 collisions
 CommonHash:     68,487,010 / 100,000,000 collisions
 RotateHash:     65,330,113 / 100,000,000 collisions
 BetterCommonHash:       394,560 / 100,000,000 collisions
-XOR32Hash:      1,326,600 / 100,000,000 collisions
-XOR64Hash:      0 / 100,000,000 collisions
+XOR32Hash:      1,151,350 / 100,000,000 collisions
+XOR64Hash:      1,164,570 / 100,000,000 collisions
 MurmurHash:     1,142,520 / 100,000,000 collisions
 OneAtATimeHash: 3,315,424 / 100,000,000 collisions
 CRC32Hash:      5,137,625 / 100,000,000 collisions
@@ -99,8 +99,8 @@ DefaultHash:    1,294,466 / 100,000,000 collisions
 CommonHash:     1,294,466 / 100,000,000 collisions
 RotateHash:     1,292,966 / 100,000,000 collisions
 BetterCommonHash:       1,199,276 / 100,000,000 collisions
-XOR32Hash:      1,154,663 / 100,000,000 collisions
-XOR64Hash:      1,153,252 / 100,000,000 collisions
+XOR32Hash:      1,152,509 / 100,000,000 collisions
+XOR64Hash:      1,155,975 / 100,000,000 collisions
 MurmurHash:     1,155,719 / 100,000,000 collisions
 OneAtATimeHash: 1,155,967 / 100,000,000 collisions
 CRC32Hash:      1,154,097 / 100,000,000 collisions
@@ -116,8 +116,8 @@ DefaultHash:    753,298,210 / 1,000,000,000 collisions
 CommonHash:     753,298,210 / 1,000,000,000 collisions
 RotateHash:     916,378,192 / 1,000,000,000 collisions
 BetterCommonHash:       175,836,937 / 1,000,000,000 collisions
-XOR32Hash:      98,216,649 / 1,000,000,000 collisions
-XOR64Hash:      220,386,045 / 1,000,000,000 collisions
+XOR32Hash:      107,682,462 / 1,000,000,000 collisions
+XOR64Hash:      107,591,746 / 1,000,000,000 collisions
 MurmurHash:     107,791,155 / 1,000,000,000 collisions
 OneAtATimeHash: 126,017,834 / 1,000,000,000 collisions
 CRC32Hash:      91,522,676 / 1,000,000,000 collisions
@@ -128,44 +128,17 @@ DefaultHash:    111,632,755 / 1,000,000,000 collisions
 CommonHash:     111,632,755 / 1,000,000,000 collisions
 RotateHash:     118,619,874 / 1,000,000,000 collisions
 BetterCommonHash:       108,173,606 / 1,000,000,000 collisions
-XOR32Hash:      107,866,210 / 1,000,000,000 collisions
-XOR64Hash:      107,868,002 / 1,000,000,000 collisions
+XOR32Hash:      107,879,429 / 1,000,000,000 collisions
+XOR64Hash:      107,886,104 / 1,000,000,000 collisions
 MurmurHash:     107,882,341 / 1,000,000,000 collisions
 OneAtATimeHash: 107,892,546 / 1,000,000,000 collisions
 CRC32Hash:      107,883,254 / 1,000,000,000 collisions
 ```
 
-## 2.147B Results 
-
-```
-+-------------------------+
-| Sequential Strings Test |
-+-------------------------+
-DefaultHash:    1,646,448,509 / 2,147,483,647 collisions
-CommonHash:     1,646,448,509 / 2,147,483,647 collisions
-RotateHash:     2,058,137,935 / 2,147,483,647 collisions
-BetterCommonHash:       559,130,343 / 2,147,483,647 collisions
-XOR32Hash:      395,644,854 / 2,147,483,647 collisions
-XOR64Hash:      570,497,872 / 2,147,483,647 collisions
-MurmurHash:     457,270,575 / 2,147,483,647 collisions
-OneAtATimeHash: 492,486,583 / 2,147,483,647 collisions
-CRC32Hash:      438,173,315 / 2,147,483,647 collisions
-+---------------------+
-| Random Strings Test |
-+---------------------+
-DefaultHash:    461,240,469 / 2,147,483,647 collisions
-CommonHash:     461,240,469 / 2,147,483,647 collisions
-RotateHash:     494,391,494 / 2,147,483,647 collisions
-BetterCommonHash:       459,858,122 / 2,147,483,647 collisions
-XOR32Hash:      457,540,452 / 2,147,483,647 collisions
-XOR64Hash:      457,546,566 / 2,147,483,647 collisions
-MurmurHash:     457,545,861 / 2,147,483,647 collisions
-OneAtATimeHash: 457,558,336 / 2,147,483,647 collisions
-CRC32Hash:      457,560,877 / 2,147,483,647 collisions
-```
-
 # What these results mean
 
-These results are weird, because at first it appears that `BetterCommonHash` and `XOR64Hash` are really great, but then they perform really poorly in the 1B tests. Now this doesn't make them bad, because they were really good when testing below 1B, but I dont know how they could have started performing so poorly after 100M. `CRC32Hash` seems like the most consistently good hash out of the bunch. Even `OneAtATimeHash` did fairly well.
+It may appear from these results that `CRC32Hash` and `BetterCommonHash` perform better in the sequential tests with small numbers. This is because the string is really short, and it is able to perfectly avoid collisions. However, hashes like `XOR32Hash` and `XOR64Hash` perform amazingly at all sizes, independent of sequential or random strings. This is means that these hashes are very good at generating random keys, regardless of their inputs. This is very impressive, considering that these XOR hashes are stupid fast. 
 
-The sequential tests were very random in the results, probably because the sequential tests changed a lot as we got to really large numbers, making it more random. I think that the random strings test helps us look at trends over the big picture. Where as the Sequential test can lead us to make some assumptions about a hashing algorithms effectiveness. In reality, the hashing algorithm you use is not going to have a huge impact on the number of collisions. This is probably why the JVM has not bothered to update the algorithm, because it would break so many things, and not give any reasonable improvement to performance.
+When looking at the results, its notable that almost all of the hashes did similarly in the random test. This is because the inputs to the hashes were so large and random that any semi decent hash would be able to output a truely random result. What is notable of a good hash is if they perform as well in the sequential test as they do in the random test. Even if that means they have some collisions the sequential 1M test. 
+
+Even though `BetterCommonHash` performs better in the sequential test <= 100M, it performs significantly worse in the 1B test. This is because it is not amazing at generating random hashes once you give it large enough strings. Meanwhile, the XOR Hashes are always performing good.

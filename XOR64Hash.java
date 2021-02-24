@@ -1,21 +1,19 @@
 /**
- * This is a very simple hashing algorithm that I threw together that is based
- * off of the XOR shift random number generator. XOR shift has proven itself to
- * be a good RNG, and so this is based on that. The pool size for this is 64
- * bits, and after it is shifted around, the next character in the string is
- * added to the pool. At the very end, the pool is shortended to 32 bits. When
- * adding characters, you have to make sure that you dont add it to the same
- * place in the two 32 bit sections of the 64 bit int, because otherwise you
- * will lose a lot of entropy when combining down to 32 bits. There is no
- * research done with this hash, I just thought of it, and it has some nice
- * properties. XORShift benifits from having a larger pool, as the pool is what
- * stores entropy. Ideally the XORShift pool is larger than the output, as
- * otherwise the mixing doesn't have much space.
+ * This is just a very simple of a 64 bit XOR shift, with amazing results. It
+ * avalances very well, and the results are almost perfectly random. The 32 bit
+ * version performs just as well as the 64 version, however this may be a
+ * stronger hash due to its bigger entropy pool. This hash performs just as well
+ * in the random test as it does in the sequential test, meaning that it
+ * provides just as random results regardless of the input string.
+ * 
+ * This hash needs some more research to be done into it, because its
+ * performance is promising.
  */
 class XOR64Hash implements IHash {
 
     // This is some random 64 bit prime
     static final long INITIAL_SEED = 0xc4ceb9fe1a85ec53L;
+    static final long INPUT_MULT = 0xff51afd7ed558ccdL;
 
     public int hash(String in) {
         long hpool = INITIAL_SEED;
@@ -24,10 +22,12 @@ class XOR64Hash implements IHash {
             hpool ^= hpool << 13;
             hpool ^= hpool >>> 7;
             hpool ^= hpool << 17;
-            hpool ^= c * 0x00_00_01_00_00_01_00_00L;
+            hpool ^= c * INPUT_MULT;
         }
 
-        return (int) (hpool ^ (hpool >>> 32));
+        hpool ^= hpool >>> 32;
+
+        return (int) hpool;
     }
 
 }

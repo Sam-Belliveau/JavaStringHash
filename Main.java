@@ -73,7 +73,7 @@ class Main {
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
-        final int iter = 10_000_000;
+        final int iter = 100_000_000;
 
         System.out.println("+-------------------------+");
         System.out.println("| Sequential Strings Test |");
