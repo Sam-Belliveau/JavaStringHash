@@ -16,8 +16,7 @@ This program contains two tests.
 
 - the second test tests many random strings, usually with the length of 12 / 13 characters. This should give very different results as the amount of entropy in the string is greatly higher. The results should be similar among all of the hashes for this one, as long as there is no major flaw.
 
-
-It is important to realize that many of the collisions happen towards the end of the test, when many of the hashes have been used up. So just because some hash has 10% collision rate when testing 1,000,000,000 hashes, doesn't make it bad. In fact, 10% collision at 1,000,000,000 is very good.
+It is important to remember, that if a hash were to output a COMPLETELY RANDOM number, statistically there would be collisions. Some hashes avoid this depending on how they are constructed. But small numbers of collisions in sequential tests is not necessarily a sign of weakness. If its number of collisions in the sequential test is the same or below the number of collisions in the random test, it is a strong hash. However, if it has more collisions than the random test, there is an issue.
 
 ## 1M Results
 
