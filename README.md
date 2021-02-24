@@ -135,6 +135,37 @@ OneAtATimeHash: 107,892,546 / 1,000,000,000 collisions
 CRC32Hash:      107,883,254 / 1,000,000,000 collisions
 ```
 
+## 2.147B Results 
+
+```
++-------------------------+
+| Sequential Strings Test |
++-------------------------+
+DefaultHash:    1,646,448,509 / 2,147,483,647 collisions
+CommonHash:     1,646,448,509 / 2,147,483,647 collisions
+RotateHash:     2,058,137,935 / 2,147,483,647 collisions
+BetterCommonHash:       559,130,343 / 2,147,483,647 collisions
+XOR32Hash:      395,644,854 / 2,147,483,647 collisions
+XOR64Hash:      570,497,872 / 2,147,483,647 collisions
+MurmurHash:     457,270,575 / 2,147,483,647 collisions
+OneAtATimeHash: 492,486,583 / 2,147,483,647 collisions
+CRC32Hash:      438,173,315 / 2,147,483,647 collisions
++---------------------+
+| Random Strings Test |
++---------------------+
+DefaultHash:    461,240,469 / 2,147,483,647 collisions
+CommonHash:     461,240,469 / 2,147,483,647 collisions
+RotateHash:     494,391,494 / 2,147,483,647 collisions
+BetterCommonHash:       459,858,122 / 2,147,483,647 collisions
+XOR32Hash:      457,540,452 / 2,147,483,647 collisions
+XOR64Hash:      457,546,566 / 2,147,483,647 collisions
+MurmurHash:     457,545,861 / 2,147,483,647 collisions
+OneAtATimeHash: 457,558,336 / 2,147,483,647 collisions
+CRC32Hash:      457,560,877 / 2,147,483,647 collisions
+```
+
 # What these results mean
 
-These results are weird, because at first it appears that `BetterCommonHash` and `XOR64Hash` are really great, but then they perform really poorly in the 1B tests. Now this doesn't make them bad, because they were really good when testing below 1B, but I dont know how they could have started performing so poorly after 100M. `CRC32Hash` seems like the most consistently good hash out of the bunch,
+These results are weird, because at first it appears that `BetterCommonHash` and `XOR64Hash` are really great, but then they perform really poorly in the 1B tests. Now this doesn't make them bad, because they were really good when testing below 1B, but I dont know how they could have started performing so poorly after 100M. `CRC32Hash` seems like the most consistently good hash out of the bunch. Even `OneAtATimeHash` did fairly well.
+
+The sequential tests were very random in the results, probably because the sequential tests changed a lot as we got to really large numbers, making it more random. I think that the random strings test helps us look at trends over the big picture. Where as the Sequential test can lead us to make some assumptions about a hashing algorithms effectiveness. In reality, the hashing algorithm you use is not going to have a huge impact on the number of collisions. This is probably why the JVM has not bothered to update the algorithm, because it would break so many things, and not give any reasonable improvement to performance.
