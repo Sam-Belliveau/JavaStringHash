@@ -43,6 +43,7 @@ class Main {
         IHash[] hashs = {
             new DefaultHash(),
             new CommonHash(),
+            new FNV1a64(),
             new RotateHash(),
             new BetterCommonHash(),
             new XOR32Hash(),
