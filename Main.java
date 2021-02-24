@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -9,6 +8,18 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 class Main {
+
+    static final IHash[] HASH_LIST = {
+        new DefaultHash(),
+        new CommonHash(),
+        new RotateHash(),
+        new BetterCommonHash(),
+        new XOR32Hash(),
+        new XOR64Hash(),
+        new MurmurHash(),
+        new OneAtATimeHash(),
+        new CRC32Hash()
+    };
 
     public static String formatInt(int n) {
         return NumberFormat.getNumberInstance(Locale.US).format(n);
@@ -36,18 +47,6 @@ class Main {
 
         return collisions;
     }
-
-    static final IHash[] HASH_LIST = {
-        new DefaultHash(),
-        new CommonHash(),
-        new RotateHash(),
-        new BetterCommonHash(),
-        new XOR32Hash(),
-        new XOR64Hash(),
-        new MurmurHash(),
-        new OneAtATimeHash(),
-        new CRC32Hash()
-    };
 
     public static void printResults(final int iter, final boolean random) throws InterruptedException, ExecutionException {
                 
