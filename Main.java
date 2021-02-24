@@ -1,7 +1,5 @@
 import java.text.NumberFormat;
-import java.util.HashSet;
 import java.util.Locale;
-import java.util.Set;
 
 class Main {
 
@@ -10,23 +8,23 @@ class Main {
     }
 
     public static void getCollisions(int iters, boolean random, IHash hash) {
+        
+        // This is a hashset that is basically so optimized for integers, it uses practically no memory
+        IntSet hashs = new IntSet();
         int collisions = 0;
-        Set<Integer> hashs = new HashSet<>();
 
         for(long i = 0; i < iters; ++i) {
             long t = i;
             if (random) t *= 0xff51afd7ed558ccdL;
-            String test = Long.toString(t, Character.MAX_RADIX);
+            
+            // Generate hash from random string
+            int h = hash.hash(Long.toString(t, Character.MAX_RADIX));
 
-            // Check to see if the hash collides
-            int h = hash.hash(test);
-            if(hashs.contains(h)) {
-                collisions += 1;
-            } else {
-                hashs.add(h);
-            }
+            // Check for unique hash
+            if(!hashs.add(h)) ++collisions;
         }
 
+        // Build a message as a result
         StringBuilder msg = new StringBuilder();
         msg.append(hash.getClass().getSimpleName()).append(":\t");
         msg.append(formatInt(collisions)).append(" / ").append(formatInt(iters)).append(" collisions");
@@ -34,7 +32,7 @@ class Main {
     }
 
     public static void main(String[] args) {
-        int iter = 100_000_000;
+        int iter = Integer.MAX_VALUE;
 
         try {
             iter = Integer.parseInt(args[0]);
@@ -67,6 +65,7 @@ class Main {
         System.out.println("+---------------------+");
 
         for(IHash hash : hashs) {
+            System.gc();
             getCollisions(iter, true, hash);
         }
     }

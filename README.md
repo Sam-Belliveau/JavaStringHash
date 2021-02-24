@@ -16,7 +16,68 @@ This program contains two tests.
 
 - the second test tests many random strings, usually with the length of 12 / 13 characters. This should give very different results as the amount of entropy in the string is greatly higher. The results should be similar among all of the hashes for this one, as long as there is no major flaw.
 
-## Results 
+
+It is important to realize that many of the collisions happen towards the end of the test, when many of the hashes have been used up. So just because some hash has 10% collision rate when testing 1,000,000,000 hashes, doesn't make it bad. In fact, 10% collision at 1,000,000,000 is very good.
+
+## 1M Results
+
+```
++-------------------------+
+| Sequential Strings Test |
++-------------------------+
+DefaultHash:    565,970 / 1,000,000 collisions
+CommonHash:     565,970 / 1,000,000 collisions
+RotateHash:     433,440 / 1,000,000 collisions
+BetterCommonHash:       0 / 1,000,000 collisions
+XOR32Hash:      0 / 1,000,000 collisions
+XOR64Hash:      0 / 1,000,000 collisions
+MurmurHash:     6 / 1,000,000 collisions
+OneAtATimeHash: 4,880 / 1,000,000 collisions
+CRC32Hash:      0 / 1,000,000 collisions
++---------------------+
+| Random Strings Test |
++---------------------+
+DefaultHash:    138 / 1,000,000 collisions
+CommonHash:     138 / 1,000,000 collisions
+RotateHash:     133 / 1,000,000 collisions
+BetterCommonHash:       104 / 1,000,000 collisions
+XOR32Hash:      120 / 1,000,000 collisions
+XOR64Hash:      113 / 1,000,000 collisions
+MurmurHash:     138 / 1,000,000 collisions
+OneAtATimeHash: 119 / 1,000,000 collisions
+CRC32Hash:      105 / 1,000,000 collisions
+```
+
+## 10M Results
+
+```
++-------------------------+
+| Sequential Strings Test |
++-------------------------+
+DefaultHash:    6,422,174 / 10,000,000 collisions
+CommonHash:     6,422,174 / 10,000,000 collisions
+RotateHash:     5,512,304 / 10,000,000 collisions
+BetterCommonHash:       0 / 10,000,000 collisions
+XOR32Hash:      0 / 10,000,000 collisions
+XOR64Hash:      0 / 10,000,000 collisions
+MurmurHash:     10,917 / 10,000,000 collisions
+OneAtATimeHash: 136,286 / 10,000,000 collisions
+CRC32Hash:      0 / 10,000,000 collisions
++---------------------+
+| Random Strings Test |
++---------------------+
+DefaultHash:    11,573 / 10,000,000 collisions
+CommonHash:     11,573 / 10,000,000 collisions
+RotateHash:     12,972 / 10,000,000 collisions
+BetterCommonHash:       12,132 / 10,000,000 collisions
+XOR32Hash:      11,425 / 10,000,000 collisions
+XOR64Hash:      11,563 / 10,000,000 collisions
+MurmurHash:     11,575 / 10,000,000 collisions
+OneAtATimeHash: 11,833 / 10,000,000 collisions
+CRC32Hash:      11,559 / 10,000,000 collisions
+```
+
+## 100M Results 
 
 ```
 +-------------------------+
@@ -45,6 +106,35 @@ OneAtATimeHash: 1,155,967 / 100,000,000 collisions
 CRC32Hash:      1,154,097 / 100,000,000 collisions
 ```
 
-Now it may appear that `BetterCommonHash` and `XOR64Hash` performed better than `MurmurHash` in the first test, and this is true. However that does not make it a better hash. Notice how `MurmurHash` performs similarly in the random test to how it does in the sequential test. This means that the results from MurmurHash are not related to the type of data you give it. This may be desirable, however Murmur hash tends to be too slow in java to be considered anyways.
+# 1B Results
 
-`XOR64Hash` performed unexpectedly amazingly, even better than `CRC32Hash`, `MurmurHash`, or even `OneAtATimeHash`. All 3 of those hashes are well proven to be great, while `XOR64Hash` is some random hash I threw together, however as shown by these tests, it performs amazing. This is great because it is also one of the faster hashes in comparison to the other 3. Because of this, I would say that `XOR64Hash` is the winner here. However, if I got to chose what the JVM would switch too, I would pick `CRC32Hash` as it is the most proven of them all, and also the most common.
+```
++-------------------------+
+| Sequential Strings Test |
++-------------------------+
+DefaultHash:    753,298,210 / 1,000,000,000 collisions
+CommonHash:     753,298,210 / 1,000,000,000 collisions
+RotateHash:     916,378,192 / 1,000,000,000 collisions
+BetterCommonHash:       175,836,937 / 1,000,000,000 collisions
+XOR32Hash:      98,216,649 / 1,000,000,000 collisions
+XOR64Hash:      220,386,045 / 1,000,000,000 collisions
+MurmurHash:     107,791,155 / 1,000,000,000 collisions
+OneAtATimeHash: 126,017,834 / 1,000,000,000 collisions
+CRC32Hash:      91,522,676 / 1,000,000,000 collisions
++---------------------+
+| Random Strings Test |
++---------------------+
+DefaultHash:    111,632,755 / 1,000,000,000 collisions
+CommonHash:     111,632,755 / 1,000,000,000 collisions
+RotateHash:     118,619,874 / 1,000,000,000 collisions
+BetterCommonHash:       108,173,606 / 1,000,000,000 collisions
+XOR32Hash:      107,866,210 / 1,000,000,000 collisions
+XOR64Hash:      107,868,002 / 1,000,000,000 collisions
+MurmurHash:     107,882,341 / 1,000,000,000 collisions
+OneAtATimeHash: 107,892,546 / 1,000,000,000 collisions
+CRC32Hash:      107,883,254 / 1,000,000,000 collisions
+```
+
+# What these results mean
+
+These results are weird, because at first it appears that `BetterCommonHash` and `XOR64Hash` are really great, but then they perform really poorly in the 1B tests. Now this doesn't make them bad, because they were really good when testing below 1B, but I dont know how they could have started performing so poorly after 100M. `CRC32Hash` seems like the most consistently good hash out of the bunch,
